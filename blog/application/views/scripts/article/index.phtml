@@ -1,0 +1,68 @@
+<?php //echo $this->articles->date ?>
+<h1>Article Index - List</h1>
+
+<?php echo $this->partial( '_readtype.phtml' , array( 'blog_id' => $this->blog_id) ) ; ?>
+
+<form method="post" action="<?php echo $this->url(array('controller'=>'article','action'=>'index'),NULL,true);?>">
+    <p>分類查詢 <select name="category_id"> 
+            <?php foreach($this->categories as $category) :?>
+            <option value="<?php echo $category->id;?>"><?php echo $category->name;?></option>
+            <?php endforeach ?>
+        </select></p>
+    <p><input type="submit" value="查詢"/></p>
+</form>
+
+
+<table>
+    <tr><td>發表時間</td><td>文章分類</td><td>文章標題</td><td>人氣</td></tr>
+    <?php foreach($this->articles as $article):?>
+    <tr>
+        <td><?php echo $article->date ; ?></td>
+        <td><a href="<?php echo $this->url(array('action' => 'class', 'controller' => 'article'), NULL, true); ?>"><?php echo $article->Category->name ; ?></a></td>
+        <td><a href="<?php echo $this->url(array('action' => 'get', 'controller' => 'article', 'article_id'=>$article->id), NULL, true); ?>"><?php echo $article->title ; ?></a></td>
+        <td><?php echo $article->popularity; ?></td>
+    </tr>
+    <?php endforeach;?>
+</table>
+
+
+
+
+
+
+
+<?php /*        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Blog</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Text</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if( $this->articles->count() == 0 ):?>
+
+                <tr>
+                    <td colspan="3">沒有資料</td>
+                </tr>
+
+                <?php endif?>
+                <?php foreach( $this->articles as $article ):?>
+
+                <tr>
+                    <td><a href="<?php echo $this->url(array('action' => 'class', 'controller' => 'article','user_id'=>$article->user_id),NULL,true); ?>"><?php echo $article->User->name;?></a><?php echo $article->User->name;?></td>
+                    <td><a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'blog','blog_id'=>$article->blog_id),NUll, true); ?>"><?php echo $article->Blog->name;?></a><?php echo $article->blog_id;?></td>
+                    <td><?php echo $article->title;?></td>
+                    <td><?php echo $article->date;?></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'article','action'=>'class','category_id'=>$article->category_id),NULL,true) ;?>"><?php echo $article->Category->name ;?></a></td>
+                    <td><?php echo $article->text;?></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'article','action'=>'edit','article_id'=>$article->id),NULL,true) ;?>">修改</a></td>
+                </tr>
+
+                <?php endforeach?>
+            </tbody>
+        </table> */?>

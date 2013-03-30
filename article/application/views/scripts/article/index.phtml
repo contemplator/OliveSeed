@@ -1,0 +1,18 @@
+        <h1>Index View</h1>
+        
+        
+        
+        <?php foreach($this->articles as $article) : ?>
+        
+        <h2><?php echo $article->title; ?></h2>
+        
+        <p>分類：<a href="<?php echo $this->url(array('controller'=>'article','action'=>'category','category_id'=>$article->category_id),NULL,true) ;?>"><?php echo $article->Category->name ;?></a></p>
+        
+        <p>
+            <?php echo $article->text;?>
+        </p>
+        <hr />
+        
+        
+        <?php endforeach ;?>
+

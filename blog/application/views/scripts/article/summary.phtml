@@ -1,0 +1,12 @@
+<h1>Article Index - Summary</h1>
+
+<?php echo $this->partial( '_readtype.phtml' , array( 'blog_id' => $this->blog_id) ) ; ?>
+
+
+<?php foreach ($this->articles as $article) : ?>
+<p>文章標題:<?php echo $article->title ;?></p>
+<p>發表時間:<?php echo $article->date ;?></p>
+<p><?php echo $article->summary() ;?></p>
+<p> <a href="<?php echo $this->url(array('action' => 'get', 'controller' => 'article','article_id'=>$article->id), NULL, true); ?>">觀賞全文</a></p>
+<hr/>        
+<?php endforeach;?>

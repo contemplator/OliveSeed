@@ -1,0 +1,22 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h1>This is User Post</h1>
+
+
+<form method="post" action="<?php echo $this->url();?>">
+
+    <?php if( $this->error):?>
+        <p style="color:red;"><?php echo $this->error;?></p>
+    <?php endif?>
+    <p>使用者名稱 <input type="text" name="name" /></p>
+    <p>密碼 <input type="password" name="password" /></p>
+    <p>信箱 <input type="text" name="email" /></p>
+    <p>手機 <input type="text" name="phoneNumber"/></p>
+
+    <p><input type="submit" value="送出" /></p>
+</form>

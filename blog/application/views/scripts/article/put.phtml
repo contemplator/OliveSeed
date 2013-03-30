@@ -1,0 +1,22 @@
+    
+
+    <a href="<?php echo $this->url(array('controller'=>'article','action'=>'index'),NULL,true);?>">回到列表</a>
+
+    <form method="post">
+        <table>
+            
+            <tr><td>文章名稱</td><td><input type="text" name="name" value="<?php echo $this->edit->name;?>" /></td></tr>
+            <tr><td>發表時間</td><td><input type="datetime" name="date" /></td></tr>
+            <tr><td>文章分類</td><td><select name="category_id">
+                <?php foreach($this->categories as $category) :  //讓它自動跑迴圈~讓分類選項和名字自己完成?>
+                <option value="<?php echo $category->id;?>"><?php echo $category->name;?></option>
+                <?php endforeach ?>
+                </select></td></tr>
+            
+            <tr><td>文章內容</td><td><textarea name="text" ><?php echo $this->edit->text;?></textarea></td></tr>
+            
+            
+        </table>
+        <input type="submit" value="修改" />
+
+    </form>

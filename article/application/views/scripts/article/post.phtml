@@ -1,0 +1,21 @@
+
+        <h1>發表新文章</h1>
+        <form method="post" action="<?php echo $this->url(array('controller'=>'article','action'=>'post'),NULL,true);?>">
+            
+            <p>文章標題<input name="title" type="text" /></p>
+            
+            <p>分類<select name="category_id">
+                    
+                    <?php foreach($this->categories as $category) :  //讓它自動跑迴圈~讓分類選項和名字自己完成?>
+                    <option value="<?php echo $category->id;?>"><?php echo $category->name;?></option>
+                    <?php endforeach ?>                    
+                </select>
+            </p>
+                
+            <p>內文<br/>
+                <textarea name="text" row="20" cols="50"></textarea>
+            </p> 
+            <p>
+                <input type="submit" value="送出"/>
+            </p>
+        </form>

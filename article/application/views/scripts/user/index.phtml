@@ -1,0 +1,42 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
+<h1>This is User Index</h1>
+
+
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if( $this->entries->count() == 0 ):?>
+
+        <tr>
+            <td colspan="3">沒有資料</td>
+        </tr>
+
+        <?php endif?>
+        <?php foreach( $this->entries as $user ):?>
+
+        <tr>
+            <td><?php echo $user->id;?></td>
+            <td><?php echo $user->name;?></td>
+            <td><?php echo $user->email;?></td>
+        </tr>
+
+        <?php endforeach?>
+        
+        <?php echo $this->entries->count(); ?>
+    </tbody>
+</table>

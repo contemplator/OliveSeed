@@ -1,0 +1,25 @@
+
+
+<?php //foreach($this->entries as $entry):?>
+<?php //echo $entry->name;?>
+<?php //endforeach; ?>
+
+<?php //echo $this->article->summary(); ?>
+
+<?php foreach($this->entries as $entry):?>
+
+<table>
+    <tr><td><?php echo $entry->name;?></td><td><?php if( $article = $entry->getLatestArticle() ) echo $article->summary();?></td>
+        <td><a href="<?php echo $this->url(array('action' => 'get', 'controller' => 'blog','blog_id'=>$entry->id), NULL, true); ?>">瀏覽</a></td></tr>
+</table>
+
+<?php endforeach;?>
+
+
+
+
+
+
+
+
+

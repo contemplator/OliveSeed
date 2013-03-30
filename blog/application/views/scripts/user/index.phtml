@@ -1,0 +1,7 @@
+<h1>User Index - List the User's Blogs</h1>
+
+<h2><?php echo $this->User->name;?></h2>
+
+<?php foreach ($this->blogs as $blog):?>
+        <a href="<?php echo $this->url(array('action' => 'get', 'controller' => 'blog','blog_id'=>$blog->id), NULL, true); ?>"><?php echo $blog->name;?></a>
+<?php echo $blog->name;?><?php endforeach; ?>

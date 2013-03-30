@@ -1,0 +1,39 @@
+
+<h1>Test Page</h1>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Blog</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Text</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if( $this->articles->count() == 0 ):?>
+
+                <tr>
+                    <td colspan="3">沒有資料</td>
+                </tr>
+
+                <?php endif?>
+                <?php foreach( $this->articles as $article ):?>
+
+                <tr>
+                    <td><a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'user','user_id'=>$article->user_id),NULL,true); ?>"><?php echo $article->User->name;?></a></td>
+                    <td><a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'blog','blog_id'=>$article->blog_id),NUll, true); ?>"><?php echo $article->Blog->name;?></a></td>
+                    <td><?php echo $article->title;?></td>
+                    <td><?php echo $article->date;?></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'article','action'=>'class','category_id'=>$article->category_id),NULL,true) ;?>"><?php echo $article->Category->name ;?></a></td>
+                    <td><?php echo $article->text;?></td>
+                    <td><a href="<?php echo $this->url(array('controller'=>'article','action'=>'put','article_id'=>$article->id),NULL,true) ;?>">修改</a></td>
+                </tr>
+
+                <?php endforeach?>
+            </tbody>
+        </table> 

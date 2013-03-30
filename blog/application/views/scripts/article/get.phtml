@@ -1,0 +1,15 @@
+
+
+<hr/>
+<a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'article'), NULL, true); ?>">回到列表</a>
+
+<h1><?php echo $this->article->title ;?></h1>
+<p><a href="<?php echo $this->url(array('action' => 'class', 'controller' => 'article','category_id'=>$article->category_id), NULL, true); ?>"><?php echo $article->Category->name ; ?></a></p>
+<p><?php echo $this->article->text ; ?></p>
+<p><?php echo $this->article->date;?>
+    <a href="<?php echo $this->url(array('action' => 'put', 'controller' => 'article','article_id'=>$this->article->id), NULL, true); ?>">修改</a>
+    <a href="<?php echo $this->url(array('action' => 'delete', 'controller' => 'article','article_id'=>$this->article->id), NULL, true); ?>">刪除</a>
+</p>
+
+
+<a href="<?php echo $this->url(array('action' => 'index', 'controller' => 'article'), NULL, true); ?>">回到列表</a>

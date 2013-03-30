@@ -1,0 +1,15 @@
+    
+
+    <a href="<?php echo $this->url(array('controller'=>'article','action'=>'index'),NULL,true);?>">回到列表</a>
+
+    <?php foreach($this->articles as $article) : ?>
+
+    <p>文章分類：<?php echo $article->Category->name ?></p>
+
+    <p>文章名稱：<?php echo $article->title ;?></p>
+
+    <p><?php echo $article->text;?></p>
+
+    <hr/>
+
+    <?php endforeach ?>

@@ -1,0 +1,124 @@
+Article:
+  connection: doctrine
+  tableName: article
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    title:
+      notblank: true
+      type: string(50)
+    user_id:
+      unsigned: true
+      default: null
+      type: integer(4)
+    blog_id:
+      default: ''
+      unsigned: true
+      type: integer(4)
+    category_id:
+      unsigned: true
+      default: null
+      type: integer(4)
+    text:
+      default: ''
+      type: string()
+    popularity:
+      default: '0'
+      type: integer(100)
+    date: timestamp(25)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      type: one
+    Category:
+      local: category_id
+      foreign: id
+      type: one
+    Blog:
+      local: blog_id
+      foreign: id
+      type: one
+Blog:
+  connection: doctrine
+  tableName: blog
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    user_id:
+      unsigned: true
+      type: integer(4)
+    name:
+      notblank: true
+      unique: true
+      type: string(20)
+  relations:
+    User:
+      local: id
+      foreign: blog_id
+      type: one
+    Articles:
+      class: Article
+      local: id
+      foreign: blog_id
+      type: many
+Category:
+  connection: doctrine
+  tableName: category
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    name:
+      notblank: true
+      type: string(255)
+  relations:
+    Articles:
+      class: Article
+      local: id
+      foreign: category_id
+      type: many
+User:
+  connection: doctrine
+  tableName: user
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    name:
+      notblank: true
+      unique: true
+      type: string(20)
+    password:
+      notblank: true
+      type: string(32)
+    email:
+      default: ''
+      type: string(200)
+    salt:
+      default: ''
+      type: string(8)
+    blog_id:
+      unsigned: true
+      type: integer(4)
+    phonenumber: string(20)
+  relations:
+    Articles:
+      class: Article
+      local: id
+      foreign: user_id
+      type: many
+    Blog:
+      local: id
+      foreign: user_id
+      type: one

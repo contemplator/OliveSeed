@@ -1,0 +1,82 @@
+Article:
+  connection: doctrine
+  tableName: article
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    title:
+      default: ''
+      type: string(255)
+    text:
+      default: ''
+      type: string()
+    user_id:
+      unsigned: true
+      default: null
+      type: integer(4)
+    category_id:
+      unsigned: true
+      default: null
+      type: integer(4)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      type: one
+    Category:
+      local: category_id
+      foreign: id
+      type: one
+Category:
+  connection: doctrine
+  tableName: category
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    name:
+      default: ''
+      type: string(255)
+  relations:
+    Articles:
+      class: Article
+      local: id
+      foreign: category_id
+      type: many
+User:
+  connection: doctrine
+  tableName: user
+  columns:
+    id:
+      primary: true
+      unsigned: true
+      autoincrement: true
+      type: integer(4)
+    name:
+      notblank: true
+      unique: true
+      type: string(20)
+    password:
+      notblank: true
+      type: string(32)
+    email:
+      email: true
+      type: string(200)
+    salt:
+      default: ''
+      type: string(8)
+    category_id:
+      notblank: true
+      type: integer(4)
+    comment: string(300)
+  relations:
+    Articles:
+      class: Article
+      local: id
+      foreign: user_id
+      type: many
